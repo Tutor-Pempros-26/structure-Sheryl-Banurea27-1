@@ -1,34 +1,46 @@
 // 12S25050 - Sheryl Valentina Banurea
 #include <stdio.h>
 
-struct Menu {
+struct InfoGizi {
     int level;
+    char *kesimpulan;
 };
 
-int main(int _argv, char **_argc) {
-    struct Menu m;
+int main(int _argv, char **_argc)
+{
+    struct InfoGizi gizi;
     
-    scanf("%d", &m.level);
+    scanf("%d", &gizi.level);
     
-    if (m.level >= 3) {
+    if (gizi.level == 5) {
+        gizi.kesimpulan = "perfect";
+    } else if (gizi.level == 4) {
+        gizi.kesimpulan = "very good";
+    } else if (gizi.level == 3) {
+        gizi.kesimpulan = "good";
+    } else if (gizi.level == 2) {
+        gizi.kesimpulan = "you need vegetables";
+    } else if (gizi.level == 1) {
+        gizi.kesimpulan = "you need side dishes";
+    }
+
+    if (gizi.level >= 5) {
+        printf("milk\n");
+    }
+    if (gizi.level >= 4) {
+        printf("fruits\n");
+    }
+    if (gizi.level >= 3) {
         printf("vegetables\n");
     }
-    if (m.level >= 2) {
+    if (gizi.level >= 2) {
         printf("side dishes\n");
     }
-    printf("staple food\n");
-    
-    if (m.level == 1) {
-        printf("you need side dishes\n");
-    } else if (m.level == 2) {
-        printf("you need vegetables\n");
-    } else if (m.level == 3) {
-        printf("good\n");
-    } else if (m.level == 4) {
-        printf("very good\n");
-    } else if (m.level == 5) {
-        printf("perfect\n");
+    if (gizi.level >= 1) {
+        printf("staple food\n");
     }
     
+    printf("%s\n", gizi.kesimpulan);
+
     return 0;
 }

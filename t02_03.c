@@ -1,52 +1,39 @@
 // 12S25050 - Sheryl Valentina Banurea
 #include <stdio.h>
+#include <stdlib.h>
 
-struct Calculator {
-    char operator;
-    long result;
-    int count;
-};
+int main(int _argv, char **_argc)
+{
+    char op;
+    int hasil = 0;
+    int angka;
+    int iterasi = 0;
 
-int main(int _argv, char **_argc) {
-    struct Calculator calc;
-    long bilangan;
-    
-    scanf(" %c", &calc.operator);
-    
-    if (calc.operator == '+') {
-        calc.result = 0;
-    } else if (calc.operator == '-') {
-        calc.result = 0;
-    } else if (calc.operator == '*') {
-        calc.result = 1;
+    scanf("%c", &op);
+
+    if (op == '*') {
+        hasil = 1;
     }
-    
-    printf("%c\n", calc.operator);
-    
-    calc.count = 0;
-    while (calc.count < 5) {
-        scanf("%ld", &bilangan);
-        
-        if (bilangan == -1) {
-            printf("-1\n");
+
+    while (iterasi < 4) {
+        scanf("%d", &angka);
+
+        if (angka == -1) {
             printf("0\n");
             break;
         }
-        
-        printf("%ld\n", bilangan);
-        
-        if (calc.operator == '+') {
-            calc.result = calc.result + bilangan;
-        } else if (calc.operator == '-') {
-            calc.result = calc.result - bilangan;
-        } else if (calc.operator == '*') {
-            calc.result = calc.result * bilangan;
+
+        if (op == '+') {
+            hasil = hasil + angka;
+        } else if (op == '-') {
+            hasil = abs(hasil - angka);
+        } else if (op == '*') {
+            hasil = hasil * angka;
         }
-        
-        printf("%ld\n", calc.result);
-        
-        calc.count++;
+
+        printf("%d\n", hasil);
+        iterasi++;
     }
-    
+
     return 0;
 }
